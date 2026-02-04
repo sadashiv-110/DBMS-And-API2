@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/css/style.css">
+
+    <title>Add Doctor</title>
+</head>
+<body>
+
+<h2>Add Doctor</h2>
+
+<textarea id="json" rows="5" cols="50">
+{
+  "name": "",
+  "speciality": ""
+}
+</textarea><br><br>
+
+<button onclick="addDoctor()">Add Doctor</button>
+
+<div id="msg"></div>
+
+<script>
+function addDoctor() {
+    fetch("/doctor/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: document.getElementById("json").value
+    })
+    .then(() => document.getElementById("msg").innerHTML = "Doctor Added");
+}
+</script>
+
+</body>
+</html>

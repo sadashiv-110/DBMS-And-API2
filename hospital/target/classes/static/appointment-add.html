@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="/css/style.css">
+
+<head>
+    <title>Add Appointment</title>
+</head>
+<body>
+
+<h2>Add Appointment</h2>
+
+<textarea id="json" rows="8" cols="60">
+{
+  "patient": { "id": 1 },
+  "doctor": { "id": 1 },
+  "appointmentDate": "2026-02-10",
+  "appointmentTime": "10:30",
+  "details": "General check up"
+}
+</textarea><br><br>
+
+<button onclick="addAppointment()">Add Appointment</button>
+
+<div id="msg"></div>
+
+<script>
+function addAppointment() {
+    fetch("/appointment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: document.getElementById("json").value
+    })
+    .then(res => res.text())
+    .then(data => document.getElementById("msg").innerHTML = data);
+}
+</script>
+
+</body>
+</html>

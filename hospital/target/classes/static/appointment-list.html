@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="/css/style.css">
+
+<head>
+    <title>Appointment List</title>
+</head>
+<body>
+
+<h2>All Appointments</h2>
+
+<button onclick="loadAppointments()">Load Appointments</button>
+
+<div id="output"></div>
+
+<script>
+function loadAppointments() {
+    fetch("/appointment")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("output").innerHTML = data;
+        });
+}
+</script>
+
+</body>
+</html>

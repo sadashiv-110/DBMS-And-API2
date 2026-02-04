@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/css/style.css">
+
+    <title>Update Employee</title>
+</head>
+<body>
+
+<h2>Update Employee</h2>
+
+<input id="id" placeholder="Employee ID"><br><br>
+
+<textarea id="json" rows="5" cols="50">
+{
+  "name": "",
+  "position": "",
+  "hireDate": ""
+}
+</textarea><br><br>
+
+<button onclick="update()">Update</button>
+
+<script>
+function update() {
+    const id = document.getElementById("id").value;
+    fetch(`/employee/update/${id}`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: document.getElementById("json").value
+    }).then(() => alert("Updated"));
+}
+</script>
+
+</body>
+</html>

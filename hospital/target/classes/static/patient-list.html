@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/css/style.css">
+
+    <title>Patient List</title>
+</head>
+<body>
+
+<h2>All Patients (IDOR Ready)</h2>
+
+<button onclick="loadPatients()">Load Patients</button>
+
+<div id="output"></div>
+
+<script>
+function loadPatients() {
+    fetch("/patient")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("output").innerHTML = data;
+        });
+}
+</script>
+
+</body>
+</html>

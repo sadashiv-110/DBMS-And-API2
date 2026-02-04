@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/css/style.css">
+
+    <title>Add Employee</title>
+</head>
+<body>
+
+<h2>Add Employee</h2>
+
+<textarea id="json" rows="5" cols="50">
+{
+  "name": "",
+  "position": "",
+  "hireDate": ""
+}
+</textarea><br><br>
+
+<button onclick="add()">Add</button>
+
+<script>
+function add() {
+    fetch("/employee/add", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: document.getElementById("json").value
+    }).then(() => alert("Added"));
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/css/style.css">
+
+    <title>Update Appointment</title>
+</head>
+<body>
+
+<h2>Update Appointment</h2>
+
+<input id="id" placeholder="Appointment ID"><br><br>
+<textarea id="json" rows="8" cols="50">
+{
+  "details": "",
+  "appointmentDate": "",
+  "appointmentTime": ""
+}
+</textarea><br><br>
+
+<button onclick="update()">Update</button>
+
+<script>
+function update() {
+    const id = document.getElementById("id").value;
+    const body = document.getElementById("json").value;
+
+    fetch(`/appointment/update/${id}`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: body
+    }).then(res => alert("Updated"));
+}
+</script>
+
+</body>
+</html>

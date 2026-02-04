@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/css/style.css">
+
+    <title>Doctor Details</title>
+</head>
+<body>
+
+<h2>Get Doctor By ID</h2>
+
+<input id="id" placeholder="Doctor ID">
+<button onclick="getDoctor()">Get</button>
+
+<div id="result"></div>
+
+<script>
+function getDoctor() {
+    const id = document.getElementById("id").value;
+    fetch(`/doctor/${id}`)
+      .then(res => res.text())
+      .then(data => document.getElementById("result").innerHTML = data);
+}
+</script>
+
+</body>
+</html>

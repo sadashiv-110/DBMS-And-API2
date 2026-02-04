@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/css/style.css">
+
+    <title>Employee List</title>
+</head>
+<body>
+
+<h2>All Employees</h2>
+
+<button onclick="loadEmployees()">Load Employees</button>
+
+<div id="output"></div>
+
+<script>
+function loadEmployees() {
+    fetch("/employee")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("output").innerHTML = data;
+        });
+}
+</script>
+
+</body>
+</html>

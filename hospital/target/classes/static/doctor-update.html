@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/css/style.css">
+
+    <title>Update Doctor</title>
+</head>
+<body>
+
+<h2>Update Doctor</h2>
+
+<input id="id" placeholder="Doctor ID"><br><br>
+
+<textarea id="json" rows="5" cols="50">
+{
+  "name": "",
+  "speciality": ""
+}
+</textarea><br><br>
+
+<button onclick="update()">Update</button>
+
+<script>
+function update() {
+    const id = document.getElementById("id").value;
+    fetch(`/doctor/update/${id}`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: document.getElementById("json").value
+    }).then(() => alert("Updated"));
+}
+</script>
+
+</body>
+</html>

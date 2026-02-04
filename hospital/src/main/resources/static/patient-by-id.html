@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><link rel="stylesheet" href="/css/style.css">
+
+<head>
+    <title>Patient By ID</title>
+</head>
+<body>
+
+<h2>Get Patient By ID (IDOR Demo)</h2>
+
+<input type="number" id="pid" placeholder="Enter Patient ID">
+<button onclick="getPatient()">Get Patient</button>
+
+<pre id="result"></pre>
+
+<script>
+function getPatient(idFromUrl = null) {
+    const id = idFromUrl || document.getElementById("pid").value;
+    if (!id) return;
+
+    fetch("/patient/" + id)
+        .then(res => res.text())
+        .then(data => document.getElementById("result").innerText = data);
+}
+
+// 🔥 READ ?id=1 FROM URL
+const params = new URLSearchParams(window.location.search);
+const urlId = params.get("id");
+
+if (urlId) {
+    document.getElementById("pid").value = urlId;
+    getPatient(urlId);
+}
+</script>
+
+</body>
+</html>

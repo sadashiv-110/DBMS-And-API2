@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="/css/style.css">
+
+<head>
+    <title>Delete Appointment</title>
+</head>
+<body>
+
+<h2>Delete Appointment</h2>
+
+<input id="id" placeholder="Appointment ID">
+<button onclick="del()">Delete</button>
+
+<script>
+function del() {
+    const id = document.getElementById("id").value;
+    fetch(`/appointment/delete/${id}`, {
+        method: "DELETE"
+    }).then(() => alert("Deleted"));
+}
+</script>
+
+</body>
+</html>

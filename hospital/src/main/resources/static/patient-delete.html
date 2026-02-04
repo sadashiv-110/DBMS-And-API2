@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><link rel="stylesheet" href="/css/style.css">
+
+<head>
+    <title>Delete Patient</title>
+</head>
+<body>
+
+<h2>Delete Patient</h2>
+
+<input id="id" placeholder="Patient ID">
+<button onclick="deletePatient()">Delete</button>
+
+<script>
+function deletePatient() {
+    const id = document.getElementById("id").value;
+
+    fetch(`/patient/delete/${id}`, {
+        method: "DELETE"
+    }).then(() => alert("Patient Deleted"));
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="/css/style.css">
+
+<head>
+    <title>Get Appointment</title>
+</head>
+<body>
+
+<h2>Get Appointment By ID</h2>
+
+<input type="number" id="aid" placeholder="Appointment ID">
+<button onclick="getAppointment()">Get</button>
+
+<div id="result"></div>
+
+<script>
+function getAppointment() {
+    const id = document.getElementById("aid").value;
+    fetch(`/appointment/${id}`)
+      .then(res => res.text())
+      .then(data => document.getElementById("result").innerHTML = data);
+}
+</script>
+
+</body>
+</html>

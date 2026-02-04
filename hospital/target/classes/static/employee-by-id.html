@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/css/style.css">
+
+    <title>Employee By ID</title>
+</head>
+<body>
+
+<h2>Get Employee By ID</h2>
+
+<input type="number" id="eid" placeholder="Employee ID">
+<button onclick="getEmployee()">Get</button>
+
+<div id="result"></div>
+
+<script>
+function getEmployee() {
+    const id = document.getElementById("eid").value;
+
+    fetch(`/employee/${id}`)
+        .then(res => res.text())
+        .then(data => document.getElementById("result").innerHTML = data);
+}
+</script>
+
+</body>
+</html>
